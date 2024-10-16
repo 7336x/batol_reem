@@ -1,6 +1,8 @@
+import 'package:batol_reem/sign_up_page.dart';
+import 'package:batol_reem/splash_screen.dart';
+import 'package:batol_reem/auth_page.dart';
 import 'package:flutter/material.dart';
-import 'splash_screen.dart'; // Import your SplashScreen
-import 'auth_page.dart'; // Import your AuthPage
+import 'package:batol_reem/Sign-In Page.dart';
 
 void main() {
   runApp(MyApp());
@@ -10,10 +12,9 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      debugShowCheckedModeBanner: false, // Optional: Remove the debug banner
-      title: 'Burgan Bank App', // Set your app title here
+      title: 'Flutter Demo',
       theme: ThemeData(
-        primarySwatch: Colors.blue, // Set the primary color for your app
+        primarySwatch: Colors.blue,
       ),
       home: SplashScreen(), // Start with SplashScreen
     );

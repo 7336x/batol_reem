@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'sign_up_page.dart'; // Import the sign-up page
+// import 'Sign_In_page.dart'; // Import the sign-in page
+import 'package:batol_reem/Sign-In Page.dart';
 
 class AuthPage extends StatelessWidget {
   @override
@@ -20,7 +23,11 @@ class AuthPage extends StatelessWidget {
             SizedBox(height: 40), // Space between image and buttons
             ElevatedButton.icon(
               onPressed: () {
-                // Action for Sign Up button
+                // Navigate to SignUpPage
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => SignUpPage()),
+                );
               },
               icon: Icon(Icons.person_add, size: 30), // Icon for Sign Up
               label: Text(
@@ -39,7 +46,11 @@ class AuthPage extends StatelessWidget {
             SizedBox(height: 20), // Space between buttons
             ElevatedButton.icon(
               onPressed: () {
-                // Action for Sign In button
+                // Navigate to SignInPage
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => SignInPage()),
+                );
               },
               icon: Icon(Icons.login, size: 30), // Icon for Sign In
               label: Text(
