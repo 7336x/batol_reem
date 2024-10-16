@@ -1,6 +1,11 @@
 import 'package:flutter/material.dart';
+import 'ProfilePage.dart'; // Import the ProfilePage
 
 class AppPage extends StatelessWidget {
+  final String username; // Store username to pass to ProfilePage
+
+  AppPage({required this.username}); // Constructor to receive username
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -8,6 +13,21 @@ class AppPage extends StatelessWidget {
       appBar: AppBar(
         title: Text('Main Dashboard'),
         backgroundColor: Colors.blue, // AppBar background color
+        actions: [
+          IconButton(
+            icon: Icon(Icons.list), // List icon
+            onPressed: () {
+              // Navigate to ProfilePage when icon is pressed
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => ProfilePage(
+                      username: username), // Pass the username to ProfilePage
+                ),
+              );
+            },
+          ),
+        ],
       ),
       body: SingleChildScrollView(
         // Make the page scrollable
@@ -92,22 +112,22 @@ class AppPage extends StatelessWidget {
                       ),
                     ),
                     Container(
-                      height: 150,
+                      height: 200,
                       child: ListView(
                         scrollDirection:
                             Axis.horizontal, // Horizontal scrolling
                         children: [
                           OfferCard(
-                            image: 'assets/images/offer1.png',
-                            title: '50% Off on Electronics',
+                            image: 'assets/images/1.jpeg',
+                            title: 'Exclusive Offer 1',
                           ),
                           OfferCard(
-                            image: 'assets/images/offer2.png',
-                            title: 'Buy 1 Get 1 Free on Travel',
+                            image: 'assets/images/2.jpeg',
+                            title: 'Exclusive Offer 2',
                           ),
                           OfferCard(
-                            image: 'assets/images/offer3.png',
-                            title: '20% Cashback on Groceries',
+                            image: 'assets/images/3.jpeg',
+                            title: 'Exclusive Offer 3',
                           ),
                         ],
                       ),

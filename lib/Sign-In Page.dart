@@ -83,13 +83,27 @@ class _SignInPageState extends State<SignInPage> {
             // Sign In Button
             ElevatedButton(
               onPressed: () {
-                // After sign-in, navigate to the AppPage
-                Navigator.pushReplacement(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => AppPage(), // Navigate to AppPage
-                  ),
-                );
+                String username = _usernameController.text;
+                String password = _passwordController.text;
+
+                // Example validation
+                if (username.isEmpty || password.isEmpty) {
+                  // Show an error message if username or password is empty
+                  ScaffoldMessenger.of(context).showSnackBar(
+                    SnackBar(
+                        content:
+                            Text('Please enter your username and password.')),
+                  );
+                } else {
+                  // After sign-in, navigate to the AppPage
+                  Navigator.pushReplacement(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) =>
+                          AppPage(username: username), // Pass the username
+                    ),
+                  );
+                }
               },
               child: Text('Sign In'),
               style: ElevatedButton.styleFrom(
