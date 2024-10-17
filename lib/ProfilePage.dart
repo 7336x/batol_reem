@@ -59,9 +59,9 @@ class _ProfilePageState extends State<ProfilePage> {
             // Circular Profile Image
             ClipOval(
               child: Image.asset(
-                widget.profileImage ?? 'images/default_profile.png', // Use default image if none provided
-                height: 100, // Set the height of the circular image
-                width: 100, // Set the width of the circular image
+                widget.profileImage ?? 'assets/images/logo2.jpeg', // Use default image if none provided
+                height: 350, // Set the height of the circular image
+                width: 350, // Set the width of the circular image
                 fit: BoxFit.cover, // Cover the circle with the image
               ),
             ),

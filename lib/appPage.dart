@@ -40,6 +40,7 @@ class _AppPageState extends State<AppPage> {
         title: Text(
           'Premier',
           style: TextStyle(
+            fontSize: 30,
             color: Colors.white, // Set title color to white
             fontWeight: FontWeight.bold, // Make title bold
           ),
@@ -58,7 +59,7 @@ class _AppPageState extends State<AppPage> {
               Navigator.push(
                 context,
                 MaterialPageRoute(
-                  builder: (context) => ProfilePage(username: widget.username, profileImage: '',), // Pass the username to ProfilePage
+                  builder: (context) => ProfilePage(username: widget.username), // Pass the username to ProfilePage
                 ),
               );
             },
