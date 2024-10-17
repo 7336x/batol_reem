@@ -34,13 +34,12 @@ class _SignInPageState extends State<SignInPage> {
           },
         ),
       ),
-      body: Padding(
+      body: Container(
+        color: Colors.white, // Set background color to white
         padding: const EdgeInsets.all(16.0),
         child: Column(
-          crossAxisAlignment:
-              CrossAxisAlignment.center, // Center the content horizontally
-          mainAxisAlignment:
-              MainAxisAlignment.start, // Start from the top vertically
+          crossAxisAlignment: CrossAxisAlignment.center, // Center the content horizontally
+          mainAxisAlignment: MainAxisAlignment.start, // Start from the top vertically
           children: [
             SizedBox(height: 32),
 
@@ -80,6 +79,9 @@ class _SignInPageState extends State<SignInPage> {
             ),
             SizedBox(height: 24),
 
+            // Additional SizedBox to move the button down
+            SizedBox(height: 40), // Adjust this value as needed
+
             // Sign In Button
             ElevatedButton(
               onPressed: () {
@@ -91,23 +93,30 @@ class _SignInPageState extends State<SignInPage> {
                   // Show an error message if username or password is empty
                   ScaffoldMessenger.of(context).showSnackBar(
                     SnackBar(
-                        content:
-                            Text('Please enter your username and password.')),
+                      content: Text('Please enter your username and password.'),
+                    ),
                   );
                 } else {
                   // After sign-in, navigate to the AppPage
                   Navigator.pushReplacement(
                     context,
                     MaterialPageRoute(
-                      builder: (context) =>
-                          AppPage(username: username), // Pass the username
+                      builder: (context) => AppPage(username: username), // Pass the username
                     ),
                   );
                 }
               },
-              child: Text('Sign In'),
+              child: Text(
+                'Sign In',
+                style: TextStyle(
+                  color: Colors.white, // Set button text color to white
+                  fontWeight: FontWeight.bold, // Make button text bold
+                  fontSize: 24, // Increase font size
+                ),
+              ),
               style: ElevatedButton.styleFrom(
                 backgroundColor: Colors.blue, // Button color
+                padding: EdgeInsets.symmetric(horizontal: 40, vertical: 20), // Increase button padding
               ),
             ),
           ],
@@ -123,3 +132,6 @@ class _SignInPageState extends State<SignInPage> {
     super.dispose();
   }
 }
+
+
+

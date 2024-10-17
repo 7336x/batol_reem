@@ -1,9 +1,38 @@
 import 'package:flutter/material.dart';
 import 'sign_up_page.dart'; // Import the sign-up page
-// import 'Sign_In_page.dart'; // Import the sign-in page
-import 'package:batol_reem/Sign-In Page.dart';
+import 'package:batol_reem/Sign-In Page.dart'; // Import the sign-in page
 
 class AuthPage extends StatelessWidget {
+  // Function to create a common button style
+  ElevatedButton _buildAuthButton(BuildContext context, String label, IconData icon, Widget page) {
+    return ElevatedButton.icon(
+      onPressed: () {
+        // Navigate to the specified page
+        Navigator.push(
+          context,
+          MaterialPageRoute(builder: (context) => page),
+        );
+      },
+      icon: Icon(
+        icon,
+        size: 30,
+        color: Colors.white, // Set icon color to white
+      ),
+      label: Text(
+        label,
+        style: TextStyle(
+          color: Colors.white, // Text color
+          fontSize: 30, // Font size
+          fontWeight: FontWeight.bold, // Bold font
+        ),
+      ),
+      style: ElevatedButton.styleFrom(
+        padding: EdgeInsets.symmetric(horizontal: 30, vertical: 20),
+        backgroundColor: Colors.blue, // Button color
+      ),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -21,54 +50,14 @@ class AuthPage extends StatelessWidget {
               ),
             ),
             SizedBox(height: 40), // Space between image and buttons
-            ElevatedButton.icon(
-              onPressed: () {
-                // Navigate to SignUpPage
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => SignUpPage()),
-                );
-              },
-              icon: Icon(Icons.person_add, size: 30), // Icon for Sign Up
-              label: Text(
-                'Sign Up',
-                style: TextStyle(
-                  color: Colors.white, // Text color
-                  fontSize: 35, // Font size
-                  fontWeight: FontWeight.bold, // Bold font
-                ),
-              ),
-              style: ElevatedButton.styleFrom(
-                padding: EdgeInsets.symmetric(horizontal: 40, vertical: 20),
-                backgroundColor: Colors.blue, // Button color
-              ),
-            ),
+            // Using the common button style for both buttons
+            _buildAuthButton(context, 'Sign Up', Icons.person_add, SignUpPage()),
             SizedBox(height: 20), // Space between buttons
-            ElevatedButton.icon(
-              onPressed: () {
-                // Navigate to SignInPage
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => SignInPage()),
-                );
-              },
-              icon: Icon(Icons.login, size: 30), // Icon for Sign In
-              label: Text(
-                'Sign In',
-                style: TextStyle(
-                  color: Colors.white, // Text color
-                  fontSize: 35, // Font size
-                  fontWeight: FontWeight.bold, // Bold font
-                ),
-              ),
-              style: ElevatedButton.styleFrom(
-                padding: EdgeInsets.symmetric(horizontal: 40, vertical: 20),
-                backgroundColor: Colors.blue, // Button color
-              ),
-            ),
+            _buildAuthButton(context, 'Sign In', Icons.login, SignInPage()),
           ],
         ),
       ),
     );
   }
 }
+

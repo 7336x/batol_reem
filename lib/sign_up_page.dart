@@ -74,6 +74,7 @@ class _SignUpPageState extends State<SignUpPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.white, // Set background color to white
       appBar: AppBar(
         title: Text(
           'Sign Up',
@@ -101,7 +102,7 @@ class _SignUpPageState extends State<SignUpPage> {
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
             Image.asset(
-              'assets/images/logo3.png',
+              'images/logo3.png',
               height: 350,
               width: 350,
             ),
@@ -163,9 +164,17 @@ class _SignUpPageState extends State<SignUpPage> {
             // Image Picker Button
             ElevatedButton(
               onPressed: _pickImage,
-              child: Text('Choose an Image'),
+              child: Text(
+                'Choose an Image',
+                style: TextStyle(
+                  color: Colors.white, // Set text color to white
+                  fontWeight: FontWeight.bold, // Make text bold
+                  fontSize: 18, // Increase font size
+                ),
+              ),
               style: ElevatedButton.styleFrom(
-                backgroundColor: Colors.blue,
+                backgroundColor: Colors.blue, // Button color
+                padding: EdgeInsets.symmetric(vertical: 16), // Increase button height
               ),
             ),
             SizedBox(height: 16),
@@ -182,9 +191,17 @@ class _SignUpPageState extends State<SignUpPage> {
             // Sign Up Button
             ElevatedButton(
               onPressed: _signUp,
-              child: Text('Sign Up'),
+              child: Text(
+                'Sign Up',
+                style: TextStyle(
+                  color: Colors.white, // Set text color to white
+                  fontWeight: FontWeight.bold, // Make text bold
+                  fontSize: 18, // Increase font size
+                ),
+              ),
               style: ElevatedButton.styleFrom(
-                backgroundColor: Colors.blue,
+                backgroundColor: Colors.blue, // Button color
+                padding: EdgeInsets.symmetric(vertical: 16), // Increase button height
               ),
             ),
           ],
@@ -207,3 +224,6 @@ class UserCredentials {
   static String password = ''; // Static variable to hold the password
   static String username = ''; // Static variable to hold the username
 }
+
+
+

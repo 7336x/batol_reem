@@ -2,8 +2,9 @@ import 'package:flutter/material.dart';
 
 class ProfilePage extends StatefulWidget {
   final String username; // Username passed from the previous page
+  final String? profileImage; // Image path passed from the SignUpPage
 
-  ProfilePage({required this.username});
+  ProfilePage({required this.username, this.profileImage});
 
   @override
   _ProfilePageState createState() => _ProfilePageState();
@@ -18,24 +19,12 @@ class _ProfilePageState extends State<ProfilePage> {
   @override
   void initState() {
     super.initState();
-
-    // Set initial values for the fields (if needed)
     _birthdayController.text = 'YYYY-MM-DD'; // Default placeholder for birthday
-    _phoneController.text = ''; // Default empty value for phone
-    _emailController.text = ''; // Default empty value for email
-    _addressController.text = ''; // Default empty value for address
   }
 
   // Function to save the updated information
   void _saveProfile() {
-    final birthday = _birthdayController.text;
-    final phone = _phoneController.text;
-    final email = _emailController.text;
-    final address = _addressController.text;
-
-    // You can add your own validation logic here
-
-    // Display a success message (you can replace this with actual saving logic)
+    // Logic to save profile data
     ScaffoldMessenger.of(context).showSnackBar(
       SnackBar(content: Text('Profile updated successfully!')),
     );
@@ -55,21 +44,29 @@ class _ProfilePageState extends State<ProfilePage> {
         ),
         backgroundColor: Colors.blue,
         leading: IconButton(
-          icon: Icon(
-            Icons.arrow_back,
-            color: Colors.white,
-            size: 30,
-          ),
+          icon: Icon(Icons.arrow_back, color: Colors.white, size: 30),
           onPressed: () {
             Navigator.pop(context); // Go back to the previous page
           },
         ),
       ),
-      body: Padding(
+      body: Container(
+        color: Colors.white, // Set background color to white
         padding: const EdgeInsets.all(16.0),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
+            // Circular Profile Image
+            ClipOval(
+              child: Image.asset(
+                widget.profileImage ?? 'images/default_profile.png', // Use default image if none provided
+                height: 100, // Set the height of the circular image
+                width: 100, // Set the width of the circular image
+                fit: BoxFit.cover, // Cover the circle with the image
+              ),
+            ),
+            SizedBox(height: 20),
+
             // Display the username
             Text(
               'Username: ${widget.username}',
@@ -133,9 +130,21 @@ class _ProfilePageState extends State<ProfilePage> {
             // Save Profile Button
             ElevatedButton(
               onPressed: _saveProfile, // Call the save function
-              child: Text('Save Profile'),
+              child: Text(
+                'Save Profile',
+                style: TextStyle(
+                  color: Colors.white, // Set text color to white
+                  fontWeight: FontWeight.bold, // Make text bold
+                  fontSize: 18, // Increase font size
+                ),
+              ),
               style: ElevatedButton.styleFrom(
-                backgroundColor: Colors.blue,
+                backgroundColor: Colors.blue, // Button color
+                padding: EdgeInsets.symmetric(vertical: 16), // Increase button height
+                textStyle: TextStyle(
+                  fontSize: 18, // Increase text size
+                  fontWeight: FontWeight.bold, // Make text bold
+                ),
               ),
             ),
           ],
@@ -153,3 +162,6 @@ class _ProfilePageState extends State<ProfilePage> {
     super.dispose();
   }
 }
+
+
+
